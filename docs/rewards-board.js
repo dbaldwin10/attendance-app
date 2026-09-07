@@ -1,4 +1,4 @@
-const BACKEND_BASE_URL = window.BACKEND_BASE_URL || "https://attendance-app-lfwc.onrender.com";
+const BACKEND_BASE_URL = window.BACKEND_BASE_URL || "https://attendance-app-yyki.onrender.com";
 
 const els = {
   yearSelect: document.getElementById("yearSelect"),

@@ -3,7 +3,7 @@
 
 
 // ==== CONFIG ====
-const BACKEND_BASE_URL = "https://attendance-app-lfwc.onrender.com";
+const BACKEND_BASE_URL = "https://attendance-app-yyki.onrender.com";
 let showWeeks = true;
 
 // ====== UI refs ======
