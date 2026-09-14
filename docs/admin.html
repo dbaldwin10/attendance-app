@@ -98,8 +98,6 @@
         }
     </style>
 
-
-
         <!-- Firebase compat SDKs (deferred so parsing isn't blocked) -->
         <script defer src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app-compat.js"></script>
         <script defer src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth-compat.js"></script>
@@ -114,7 +112,6 @@
 
         <!-- your app (module scripts are deferred by default; keep type="module") -->
         <script type="module" src="./admin.js"></script>
-
 
 </head>
 
@@ -152,16 +149,13 @@
 
     <main id="adminContent">
         <div>
-                       
-            
             <!-- Visible to any signed-in user; the server still enforces role -->
             <section id="onlyAuthed">
                 <fieldset>
                     <legend>Upload weekly absence report</legend>
-            
-            
-            
                     <p class="muted">Upload the Sentral <code class="mono">absence_list</code> report. The backend only counts Mon-Thu rows where <code class="mono">Shorthand</code> is <code class="mono">U</code> and <code class="mono">Description</code> is <code class="mono">Unjustified</code>, or <code class="mono">Shorthand</code> is <code class="mono">?</code> and <code class="mono">Description</code> is <code class="mono">Absent</code>. Extra dates in the file are ignored.</p>
+                    <p>Sentral -> School Attendance -> Reports -> Absence List</p>
+                    <p>Keep the week set to the current week</p>
                     <input id="csvFile" type="file" accept=".xls,.xlsx,.csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv" />
                     <button id="uploadBtn">Upload</button>
                     <div id="uploadMsg" class="muted"></div>
@@ -191,8 +185,7 @@
                     <div id="rosterUploadMsg"></div>
                 </fieldset>
             </section>
-
-
+            
         </div>
     </main>
 </body>
