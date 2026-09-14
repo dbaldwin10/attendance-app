@@ -4,7 +4,6 @@ const { parse } = require("csv-parse/sync");
 const crypto = require("crypto");
 const XLSX = require("xlsx");
 
-
 const PORT = process.env.PORT || 3000;
 const SCHOOL_ID = process.env.SCHOOL_ID || "default";
 
@@ -14,10 +13,6 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || "")
   .map(s => s.trim())
   .filter(Boolean);
 
-
-
-
-  
 const app = express();
 
 // Basic JSON parsing (not needed for file uploads yet)
@@ -36,7 +31,6 @@ app.use((req, res, next) => {
   if (req.method === "OPTIONS") return res.sendStatus(204);
   next();
 });
-
 
 // --- Public: Firebase config (served from env) ---
 app.get("/public/firebase-config", (req, res) => {
@@ -61,8 +55,6 @@ app.get("/public/firebase-config", (req, res) => {
   });
   res.send(JSON.stringify(cfg));
 });
-
-  
 
 // --- Firebase Admin init (safe even if credentials not set yet) ---
 let admin, db;
@@ -105,10 +97,8 @@ function sendFirestoreError(res, e, fallbackMessage) {
   return res.status(500).json({ error: fallbackMessage });
 }
 
-
-
 // --- Auth middleware (Email/Password tokens) ---
-// ✅ outer returns a function; inner can be async
+//  outer returns a function; inner can be async
 function requireAuth(requiredRole) {
   return async (req, res, next) => {
     if (!admin || !db) return res.status(503).json({ error: "auth not initialised on server" });
@@ -267,16 +257,28 @@ function isSupportedRollClass(value) {
   return (
     /^07roll\d+$/i.test(text) ||
     /^08roll\d+$/i.test(text) ||
+    /^09roll\d+$/i.test(text) ||
+    /^10roll\d+$/i.test(text) ||
     /^7[a-z0-9]*/i.test(text) ||
     /^8[a-z0-9]*/i.test(text) ||
+    /^9[a-z0-9]*/i.test(text) ||
+    /^10[a-z0-9]*/i.test(text) ||
     normalized.includes("year7") ||
     normalized.includes("year8") ||
+    normalized.includes("year9") ||
+    normalized.includes("year10") ||
     normalized.includes("yr7") ||
     normalized.includes("yr8") ||
+    normalized.includes("yr9") ||
+    normalized.includes("yr10") ||
     normalized.includes("y7") ||
     normalized.includes("y8") ||
+    normalized.includes("y9") ||
+    normalized.includes("y10") ||
     normalized.startsWith("07roll") ||
-    normalized.startsWith("08roll")
+    normalized.startsWith("08roll") ||
+    normalized.startsWith("09roll") ||
+    normalized.startsWith("10roll")
   );
 }
 
@@ -1096,8 +1098,6 @@ app.get("/api/leaderboard", requireAuth("teacher"), async (req, res) => {
     return sendFirestoreError(res, e, "failed to load leaderboard");
   }
 });
-
-
 
 // --- Health check ---
 app.get("/healthz", (req, res) => {
