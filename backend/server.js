@@ -255,6 +255,8 @@ function isSupportedRollClass(value) {
   if (!text) return false;
   const normalized = text.toLowerCase().replace(/[^a-z0-9]/g, "");
   return (
+    /^Support\d+$/i.test(text) ||
+    /^SRC\d+$/i.test(text) ||
     /^07roll\d+$/i.test(text) ||
     /^08roll\d+$/i.test(text) ||
     /^09roll\d+$/i.test(text) ||
@@ -275,6 +277,8 @@ function isSupportedRollClass(value) {
     normalized.includes("y8") ||
     normalized.includes("y9") ||
     normalized.includes("y10") ||
+    normalized.startsWith("Support") ||
+    normalized.startsWith("SRC") ||
     normalized.startsWith("07roll") ||
     normalized.startsWith("08roll") ||
     normalized.startsWith("09roll") ||
