@@ -1,6 +1,6 @@
 ﻿# Attendance App
 
-Attendance App is a web app for tracking Monday to Thursday roll-call attendance for Year 7 and Year 8 roll classes, importing absence reports from Sentral, calculating weekly student status, and showing the data in a few different staff-facing views.
+Attendance App is a web app for tracking Monday to Thursday roll-call attendance for Year 7, Year 8, Year 9 & Year 10 roll classes, importing absence reports from Sentral, calculating weekly student status, and showing the data in a few different staff-facing views.
 
 ## What The Site Does
 
@@ -25,7 +25,7 @@ The system works from the roster plus the uploaded absence report.
 
 - The roster is the source of truth for which students exist in each roll class.
 - Only Year 7 and Year 8 roll classes are included.
-  Example roll classes: `07Roll01`, `08Roll03`.
+  Example roll classes: `07Roll01`, `08Roll03`, `09Roll04`, `10Roll08`.
 - The attendance logic only cares about Monday to Thursday roll-call attendance.
 - For each school week, each student is given an on-time score out of 4.
 
